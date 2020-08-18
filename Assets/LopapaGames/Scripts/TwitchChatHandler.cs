@@ -31,6 +31,7 @@ namespace LopapaGames
 
         public ACommand[] Commands;
 
+        private bool _hasErrors = false;
         void Start()
         {
             if (configuration)
@@ -50,15 +51,34 @@ namespace LopapaGames
 
                     ws.OnOpen += (sender, e) => OnConnect(e.ToString());
                 }
+                
+                if (String.IsNullOrEmpty(this.configuration.OAuth))
+                {
+                    _hasErrors = true;
+                }
+                if (String.IsNullOrEmpty(this.configuration.BotName))
+                {
+                    _hasErrors = true;
+                }
+                if (String.IsNullOrEmpty(this.configuration.ChannelName))
+                {
+                    _hasErrors = true;
+                }
             }
             else
             {
+                _hasErrors = true;
                 Debug.LogError("Twitch Configuration was not found or not assigned to the TwitchChatHandler in " + this.gameObject.name);
             }
         }
 
         public void Reconnect()
         {
+            if (_hasErrors)
+            {
+                return;
+            }
+
             twitchChatCallbackHandler.Reconnect();
             ws.Connect();
 
@@ -87,6 +107,10 @@ namespace LopapaGames
         }
         public void OnMessage(string msg)
         {
+            if (_hasErrors)
+            {
+                return;
+            }
             twitchChatCallbackHandler.OnMessage(msg);
             
             if (msg.StartsWith("PING"))
@@ -136,6 +160,10 @@ namespace LopapaGames
 
         private void ParseMessage(string userName, string message)
         {
+            if (_hasErrors)
+            {
+                return;
+            }
             if (String.IsNullOrEmpty(userName))
             {
                 return;
@@ -181,6 +209,10 @@ namespace LopapaGames
         {
             if (configuration)
             {
+                if (_hasErrors)
+                {
+                    return;
+                }
                 if (ws.ReadyState != WebSocketState.Open)
                 {
                     Reconnect();

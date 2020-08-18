@@ -45,15 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a281f2f9d5ea5f44bcaa84ca42948bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  configuration: {fileID: 11400000, guid: 82655f8c30348ed4db5999d65256eab3, type: 2}
   ListenToWhispers: 1
   ListenToPublicChat: 1
   EnableHelp: 1
-  configuration: {fileID: 11400000, guid: 3567924f07cfce246a2db02a6171c21d, type: 2}
+  HelpCommand: '!help'
   twitchChatCallbackHandler: {fileID: 6343945465975940580}
   Commands:
   - {fileID: 11400000, guid: e71fa63b9618185409c4a6929d171d8b, type: 2}
   - {fileID: 11400000, guid: 145b79546df58b744af631abc9e94370, type: 2}
-  HelpCommand: '!help'
 --- !u!114 &4043749172617753617
 MonoBehaviour:
   m_ObjectHideFlags: 0
