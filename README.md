@@ -9,6 +9,11 @@ https://github.com/PimDeWitte/UnityMainThreadDispatcher
 
 WebSocketSharp: [sta/websocket-sharp](https://github.com/sta/websocket-sharp).
 
+## Contact for suggestions/troubleshooting
+ - https://www.twitch.tv/porfiriopartida
+ - https://discord.gg/Cmypp88
+
+
 ## How to Setup:
 
 1. Import the project.
